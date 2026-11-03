@@ -1,0 +1,10 @@
+@import '@mantine/core/styles.css';
+@import '@mantine/notifications/styles.css';
+@import './tokens.css';
+@import './layout.css';
+@import './pages.css';
+
+@import './studio.css';
+@import './editor.css';
+
+@import './reader.css';

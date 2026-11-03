@@ -1,0 +1,33 @@
+name: artismaga
+services:
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    command: [start, --unauthenticated, --bind, '0.0.0.0:8000', 'rocksdb:/artismaga-data/platform.db']
+    volumes: [database:/artismaga-data]
+    networks: [database]
+    healthcheck:
+      test: ['CMD', '/surreal', 'isready', '--endpoint', 'http://127.0.0.1:8000']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+    restart: unless-stopped
+  app:
+    build: .
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      ARTISMAGA_DATABASE_URL: http://database:8000
+    volumes: [app-data:/app/data]
+    ports: ['127.0.0.1:8000:8000']
+    networks: [default, database]
+    restart: unless-stopped
+volumes:
+  database:
+  app-data:
+networks:
+  database:
+    internal: true

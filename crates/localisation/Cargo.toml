@@ -1,0 +1,23 @@
+[package]
+name = "artismaga-localisation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+[lints]
+workspace = true
+[dependencies]
+anyhow.workspace = true
+artismaga-core.workspace = true
+artismaga-db.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tokio.workspace = true
+reqwest.workspace = true
+uuid.workspace = true
+tempfile.workspace = true
+artismaga-storage.workspace = true
+
+[features]
+local-model-tests = []

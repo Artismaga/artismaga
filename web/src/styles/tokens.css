@@ -1,0 +1,126 @@
+/* Material 3 semantic roles. Theme component defaults live in theme/theme.ts. */
+:root {
+  --brand: var(--mantine-color-brand-7, #24675a);
+  --brand-soft: var(--mantine-color-brand-1, #e1f0e8);
+  --mantine-color-body: var(--surface);
+  --mantine-color-text: var(--ink);
+  --mantine-color-dimmed: var(--muted);
+}
+[data-mantine-color-scheme='dark'] {
+  --brand: var(--mantine-color-brand-3, #a3d4bf);
+  --brand-soft: var(--mantine-color-brand-light, #283e31);
+}
+:root[data-reading-theme='sepia'][data-mantine-color-scheme='light'] {
+  --surface: color-mix(in srgb, #ead8b3 98%, var(--mantine-color-brand-7));
+  --surface-container: color-mix(in srgb, #f6e8cb 98%, var(--mantine-color-brand-7));
+  --surface-low: color-mix(in srgb, #dfc99f 97%, var(--mantine-color-brand-7));
+  --surface-high: #d8bd8c;
+  --outline: #c8ad7e;
+  --ink: #44331f;
+  --muted: #715a39;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  text-underline-offset: 3px;
+}
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 4px;
+}
+.mantine-Card-root,
+.mantine-Paper-root {
+  background: var(--surface-container);
+  border-color: var(--outline);
+}
+.mantine-Input-input {
+  background: var(--surface-container);
+  border-color: var(--outline);
+}
+.mantine-InputWrapper-label {
+  font-weight: 550;
+  margin-bottom: 6px;
+}
+.mantine-InputWrapper-description {
+  line-height: 1.6;
+}
+.mantine-Button-root {
+  font-weight: 600;
+  letter-spacing: 0;
+  min-height: 40px;
+}
+.mantine-NavLink-root {
+  border-radius: 24px;
+  min-height: 48px;
+  padding-inline: 16px;
+  font-weight: 550;
+  color: var(--muted);
+}
+.mantine-NavLink-root[data-active] {
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+.mantine-NavLink-root[data-disabled] {
+  opacity: 0.65;
+}
+.mantine-Skeleton-root:where([data-visible])::before {
+  background: var(--surface-low);
+}
+.mantine-Skeleton-root:where([data-visible])::after {
+  background: var(--surface-high);
+}
+.mantine-Table-th {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 550;
+}
+.mantine-Table-tr {
+  border-color: var(--outline);
+}
+.mantine-Alert-root {
+  border: 1px solid var(--outline);
+}
+:root[data-high-contrast] {
+  --muted: var(--ink) !important;
+  --outline: var(--ink) !important;
+}
+[data-large-controls] .mantine-Button-root,
+[data-large-controls] .mantine-Input-input {
+  min-height: 52px;
+}
+[data-reduced-motion] *,
+[data-reduced-motion] *::before,
+[data-reduced-motion] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scheme roles also cover Mantine portals, menus and disabled controls. */
+.mantine-Menu-dropdown,
+.mantine-Combobox-dropdown,
+.mantine-Modal-content,
+.mantine-Modal-header {
+  background: var(--surface-container);
+  border-color: var(--outline);
+}
+.mantine-Menu-item:hover,
+.mantine-Combobox-option[data-combobox-selected] {
+  background: var(--surface-high);
+}

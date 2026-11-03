@@ -1,0 +1,19 @@
+# Normally created by the browser installer in the persistent app data volume.
+site_name = "Artismaga"
+public_url = "http://localhost:8000"
+secure_cookies = false
+
+[database]
+url = "http://database:8000"
+namespace = "artismaga"
+database = "platform"
+# Optional only for independently managed authenticated databases:
+# username = "application"
+# password = "use-a-long-random-secret"
+
+# Required for a public HTTPS site. SMTP uses certificate-validated TLS on port 465.
+# [mail]
+# host = "smtp.example.com"
+# username = "mailer"
+# password = "replace-this"
+# from = "stories@example.com"

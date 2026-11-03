@@ -1,0 +1,16 @@
+[package]
+name = "artismaga-accounts"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+[lints]
+workspace = true
+[dependencies]
+artismaga-core.workspace = true
+artismaga-db.workspace = true
+artismaga-auth.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+url.workspace = true

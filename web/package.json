@@ -1,0 +1,43 @@
+{
+  "name": "artismaga-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && esbuild src/client/index.tsx --bundle --format=esm --minify --target=es2022 --external:/assets/* --outfile=dist/client.js && esbuild src/server/worker.ts --bundle --platform=node --format=esm --packages=external --outfile=dist/server/worker.js && esbuild src/pages/reader/speech.worker.ts --bundle --format=esm --minify --target=es2022 --outfile=dist/tts/speech-worker.js && node scripts/copy-tts.mjs",
+    "test": "tsx --test tests/*.test.ts tests/*.test.tsx",
+    "format": "prettier --write src tests tsconfig.json package.json",
+    "format:check": "prettier --check src tests tsconfig.json package.json"
+  },
+  "dependencies": {
+    "@mantine/core": "^9.7.4",
+    "@mantine/hooks": "^9.7.4",
+    "@mantine/notifications": "9.7.4",
+    "@tabler/icons-react": "^3.50.0",
+    "@tiptap/pm": "^3.32.1",
+    "@tiptap/react": "^3.32.1",
+    "@tiptap/starter-kit": "^3.32.1",
+    "diff": "^9.0.0",
+    "get-nonce": "1.0.1",
+    "kokoro-js": "1.2.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "esbuild": "^0.25.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "overrides": {
+    "sharp": "0.35.5"
+  }
+}

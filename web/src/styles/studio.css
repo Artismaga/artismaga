@@ -1,0 +1,336 @@
+.studio-layout {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.studio-filters {
+  padding: 12px;
+}
+.studio-search {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.studio-search .grow {
+  min-width: 180px;
+}
+.studio-empty {
+  padding: 56px 28px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.work-card {
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    transform 0.15s,
+    border-color 0.15s;
+}
+.work-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--brand);
+}
+.work-card-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.4;
+}
+.artwork-picker {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.artwork-picker-empty {
+  width: 128px;
+  height: 170px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--surface-low);
+  color: var(--muted);
+  border: 1px dashed var(--outline);
+  border-radius: 12px;
+}
+.artwork-picker--hero {
+  flex-direction: column;
+  align-items: stretch;
+}
+.artwork-picker--hero .artwork-picker-empty {
+  width: 100%;
+  height: 120px;
+}
+.creation-preview {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 32px;
+}
+.creation-preview-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 30px;
+}
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  gap: 24px;
+  align-items: start;
+}
+.work-header {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 90px 0 32px;
+  margin-top: 0;
+  isolation: isolate;
+}
+.work-hero-art {
+  overflow: hidden;
+  position: absolute;
+  inset: 0 -40px auto;
+  height: 100%;
+  min-height: 320px;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.7;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 18%, transparent 100%);
+  pointer-events: none;
+}
+.work-hero-colours {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.work-hero-art--generated .work-hero-colours {
+  filter: blur(28px);
+  transform: scale(1.06);
+}
+.work-hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/noise.svg');
+  opacity: 0.6;
+  mix-blend-mode: soft-light;
+}
+.work-hero-art--generated .work-hero-grain {
+  filter: contrast(1.5);
+}
+.work-overview-cover {
+  width: 184px;
+  height: 276px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgb(0 0 0/0.15);
+}
+.work-cover-wrap {
+  flex-shrink: 0;
+}
+.work-cover-edit {
+  display: block;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.work-cover-edit span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(0 0 0/0.75);
+  color: #fff;
+  padding: 14px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.work-cover-edit:hover span,
+.work-cover-edit:focus-visible span {
+  opacity: 1;
+}
+.work-title-block {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+.identity-edit {
+  font: inherit;
+  line-height: inherit;
+  display: inline-flex;
+  gap: 12px;
+  align-items: baseline;
+  text-align: left;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.identity-edit svg {
+  opacity: 0;
+  flex-shrink: 0;
+  color: var(--brand);
+}
+.identity-edit:hover svg,
+.identity-edit:focus-visible svg {
+  opacity: 1;
+}
+.work-subtitle {
+  color: var(--ink);
+  font-size: 18px;
+  margin-top: 12px;
+}
+.hero-edit-button {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface-container);
+  padding: 10px 16px;
+  border-radius: 24px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.work-header:hover .hero-edit-button,
+.hero-edit-button:focus-visible {
+  opacity: 1;
+}
+@media (max-width: 62em) {
+  .studio-layout {
+    grid-template-columns: 1fr;
+  }
+  .studio-filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .studio-filters > .nav-label {
+    grid-column: 1/-1;
+  }
+  .work-hero-art {
+    overflow: hidden;
+    inset-inline: -24px;
+  }
+  .work-header {
+    gap: 24px;
+  }
+  .work-overview-cover {
+    width: 150px;
+    height: 225px;
+  }
+}
+@media (max-width: 40em) {
+  .studio-search > .mantine-NativeSelect-root {
+    width: 100%;
+  }
+  .work-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 56px;
+    gap: 24px;
+  }
+  .work-hero-art {
+    overflow: hidden;
+    inset-inline: -16px;
+  }
+  .work-title-block {
+    width: 100%;
+  }
+  .hero-edit-button,
+  .identity-edit svg,
+  .work-cover-edit span {
+    opacity: 1;
+  }
+  .artwork-picker {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .artwork-picker .mantine-Group-root {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .studio-empty {
+    padding: 40px 20px;
+  }
+}
+.chapter-toolbar {
+  flex-wrap: wrap;
+}
+.chapter-branch {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.chapter-group > .chapter-branch {
+  margin-left: 18px;
+  padding-left: 12px;
+  border-left: 1px solid var(--outline);
+}
+.chapter-group {
+  margin-block: 8px;
+}
+.chapter-group summary {
+  cursor: pointer;
+  padding: 12px;
+  background: var(--surface-low);
+  border-radius: 10px;
+  font-weight: 600;
+}
+.chapter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--outline);
+}
+.chapter-row .grow {
+  min-width: 0;
+}
+.chapter-row [draggable='true'] {
+  cursor: grab;
+  touch-action: auto;
+}
+.chapter-row:has([draggable='true']:active) {
+  background: var(--surface-high);
+}
+@media (max-width: 650px) {
+  .chapter-row {
+    flex-wrap: wrap;
+  }
+  .chapter-row .grow {
+    flex: 1;
+  }
+  .chapter-actions {
+    width: 100%;
+    padding-left: 40px;
+  }
+  .chapter-group > .chapter-branch {
+    margin-left: 5px;
+    padding-left: 5px;
+  }
+}
+
+.page-content.work-content {
+  padding-top: 0;
+}
+.work-back {
+  position: absolute;
+  top: 20px;
+  left: 0;
+}

@@ -1,0 +1,24 @@
+-- Additive account/configuration migration; preserves existing users and preferences.
+BEGIN TRANSACTION;
+DEFINE TABLE IF NOT EXISTS account_profile SCHEMAFULL PERMISSIONS NONE;
+DEFINE FIELD IF NOT EXISTS uid ON account_profile TYPE string;
+DEFINE FIELD IF NOT EXISTS revision ON account_profile TYPE int;
+DEFINE FIELD IF NOT EXISTS value ON account_profile TYPE object FLEXIBLE;
+DEFINE INDEX IF NOT EXISTS profile_uid ON account_profile FIELDS uid UNIQUE;
+DEFINE TABLE IF NOT EXISTS account_preferences SCHEMAFULL PERMISSIONS NONE;
+DEFINE FIELD IF NOT EXISTS uid ON account_preferences TYPE string;
+DEFINE FIELD IF NOT EXISTS revision ON account_preferences TYPE int;
+DEFINE FIELD IF NOT EXISTS value ON account_preferences TYPE object FLEXIBLE;
+DEFINE INDEX IF NOT EXISTS preferences_uid ON account_preferences FIELDS uid UNIQUE;
+DEFINE TABLE IF NOT EXISTS site_configuration SCHEMAFULL PERMISSIONS NONE;
+DEFINE FIELD IF NOT EXISTS revision ON site_configuration TYPE int;
+DEFINE FIELD IF NOT EXISTS value ON site_configuration TYPE object FLEXIBLE;
+DEFINE FIELD IF NOT EXISTS default_group ON site_settings TYPE string DEFAULT 'reader';
+UPDATE site_settings:main SET default_group = 'reader' WHERE default_group = NONE;
+DEFINE FIELD IF NOT EXISTS sid ON session TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS created_at ON session TYPE option<int>;
+DEFINE FIELD IF NOT EXISTS device ON session TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS pending_email ON account_token TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS membership_revision ON site_settings TYPE int DEFAULT 0;
+UPDATE site_settings:main SET membership_revision = 0 WHERE membership_revision = NONE;
+COMMIT TRANSACTION;

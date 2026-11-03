@@ -1,0 +1,38 @@
+[package]
+name = "artismaga-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+artismaga-localisation.workspace = true
+artismaga-core.workspace = true
+artismaga-config.workspace = true
+artismaga-db.workspace = true
+artismaga-auth.workspace = true
+artismaga-render.workspace = true
+rocket.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+artismaga-setup.workspace = true
+
+artismaga-accounts.workspace = true
+artismaga-administration.workspace = true
+
+artismaga-storage.workspace = true
+artismaga-studio.workspace = true
+
+reqwest.workspace = true
+toml.workspace = true
+url.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+image.workspace = true
+

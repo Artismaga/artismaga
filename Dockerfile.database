@@ -1,0 +1,6 @@
+# Prepare volume ownership in the image, without a privileged startup/init service.
+FROM busybox:1.37.0 AS data-directory
+RUN mkdir /owned-data && touch /owned-data/.keep && chown -R 65532:65532 /owned-data
+FROM surrealdb/surrealdb:v3.3.1
+COPY --from=data-directory --chown=65532:65532 /owned-data /artismaga-data
+USER 65532:65532

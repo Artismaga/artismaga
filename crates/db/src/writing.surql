@@ -1,0 +1,21 @@
+-- Private chapter drafts and immutable checkpoints. Application enforces work access.
+DEFINE TABLE IF NOT EXISTS chapter_draft SCHEMAFULL PERMISSIONS NONE;
+DEFINE FIELD IF NOT EXISTS work ON chapter_draft TYPE string;
+DEFINE FIELD IF NOT EXISTS chapter ON chapter_draft TYPE string;
+DEFINE FIELD IF NOT EXISTS revision ON chapter_draft TYPE int;
+DEFINE FIELD IF NOT EXISTS value ON chapter_draft TYPE object FLEXIBLE;
+DEFINE FIELD IF NOT EXISTS updated_at ON chapter_draft TYPE int;
+DEFINE FIELD IF NOT EXISTS updated_by ON chapter_draft TYPE string;
+DEFINE FIELD IF NOT EXISTS author_name ON chapter_draft TYPE string;
+DEFINE FIELD IF NOT EXISTS checkpoint_at ON chapter_draft TYPE int;
+DEFINE INDEX IF NOT EXISTS chapter_draft_identity ON chapter_draft FIELDS work,chapter UNIQUE;
+DEFINE TABLE IF NOT EXISTS chapter_revision SCHEMAFULL PERMISSIONS NONE;
+DEFINE FIELD IF NOT EXISTS work ON chapter_revision TYPE string;
+DEFINE FIELD IF NOT EXISTS chapter ON chapter_revision TYPE string;
+DEFINE FIELD IF NOT EXISTS revision ON chapter_revision TYPE int;
+DEFINE FIELD IF NOT EXISTS value ON chapter_revision TYPE object FLEXIBLE;
+DEFINE FIELD IF NOT EXISTS updated_at ON chapter_revision TYPE int;
+DEFINE FIELD IF NOT EXISTS updated_by ON chapter_revision TYPE string;
+DEFINE FIELD IF NOT EXISTS author_name ON chapter_revision TYPE string;
+DEFINE FIELD IF NOT EXISTS reason ON chapter_revision TYPE string;
+DEFINE INDEX IF NOT EXISTS chapter_revision_identity ON chapter_revision FIELDS work,chapter,revision UNIQUE;

@@ -1,0 +1,230 @@
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: -9999px;
+  z-index: 1000;
+  background: var(--surface-container);
+  color: var(--brand);
+  padding: 12px 20px;
+  border-radius: 12px;
+}
+.skip-link:focus {
+  left: 12px;
+}
+.app-header {
+  background: var(--surface-container);
+  border-color: var(--outline);
+}
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  color: var(--ink);
+  text-decoration: none;
+  max-width: 380px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.wordmark:hover {
+  text-decoration: none;
+}
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: var(--surface-container);
+  flex-shrink: 0;
+}
+.app-nav {
+  background: var(--surface-container);
+  border-color: var(--outline);
+}
+.nav-label {
+  font-size: 10px;
+  font-weight: 650;
+  color: var(--muted);
+  letter-spacing: 1.1px;
+  padding: 12px 16px;
+}
+.nav-note {
+  margin: auto 4px 24px;
+  padding: 20px;
+  border: 1px solid var(--outline);
+  border-radius: 16px;
+  color: var(--brand);
+  background: var(--surface-low);
+}
+.nav-note p {
+  line-height: 1.65;
+}
+.nav-footer {
+  padding: 4px 16px 8px;
+}
+.user-control {
+  padding: 6px 8px;
+  border-radius: 24px;
+}
+.user-control:hover {
+  background: var(--surface-low);
+}
+.page-content {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 40px;
+}
+.page-heading {
+  margin-bottom: 32px;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--brand);
+  margin-bottom: 10px;
+}
+.page-heading h1 {
+  letter-spacing: -0.9px;
+}
+.soft-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.brand-icon {
+  color: var(--brand);
+}
+.muted-icon {
+  color: var(--muted);
+}
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+.settings-tabs > .mantine-Tabs-list {
+  gap: 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  border-color: var(--outline);
+}
+.settings-tabs .mantine-Tabs-tab {
+  padding: 16px 14px;
+  white-space: nowrap;
+  font-weight: 550;
+  min-height: 52px;
+}
+.settings-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(260px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.settings-single {
+  max-width: 880px;
+}
+.card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.setting-switch {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--outline);
+}
+.setting-switch .mantine-Switch-body {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  gap: 24px;
+}
+.setting-switch .mantine-Switch-labelWrapper {
+  padding-left: 0;
+  flex: 1;
+}
+.setting-switch .mantine-Switch-label {
+  font-weight: 550;
+}
+.setting-switch .mantine-Switch-description {
+  margin-top: 4px;
+  line-height: 1.65;
+}
+@media (max-width: 75em) {
+  .page-content {
+    padding: 32px;
+  }
+  .settings-columns {
+    grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr);
+  }
+}
+@media (max-width: 62em) {
+  .page-content {
+    padding: 28px 24px;
+  }
+  .settings-columns {
+    grid-template-columns: 1fr;
+  }
+  .nav-note {
+    margin-top: 32px;
+  }
+}
+@media (max-width: 40em) {
+  .page-content {
+    padding: 24px 16px;
+  }
+  .page-heading h1 {
+    font-size: 26px;
+  }
+  .wordmark {
+    font-size: 18px;
+    max-width: 190px;
+    gap: 8px;
+  }
+  .preview-label,
+  .user-name,
+  .join-button {
+    display: none;
+  }
+  .settings-tabs .mantine-Tabs-tab {
+    padding-inline: 10px;
+  }
+}
+
+@media (max-width: 61.99em) {
+  .app-nav:not([data-opened]) {
+    visibility: hidden;
+  }
+}
+
+.notification-row {
+  padding: 8px;
+  border-bottom: 1px solid var(--outline);
+}
+.notification-target {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.notification-target img {
+  object-fit: cover;
+}
+.notification-unread {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mantine-color-brand-filled);
+  flex-shrink: 0;
+}
